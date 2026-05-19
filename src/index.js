@@ -13,6 +13,10 @@ function refreshWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
+  let iconElement = document.querySelector("#icon");
+
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+iconElement.setAttribute("alt", response.data.condition.description);
 
   let temperature = response.data.temperature.current;
 
