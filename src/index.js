@@ -50,10 +50,6 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
   let days = [
     "Sunday",
     "Monday",
@@ -64,13 +60,18 @@ function formatDate(date) {
     "Saturday"
   ];
 
-  return `${days[day]} ${hours}:${minutes}`;
+  return {
+    day: days[day],
+    time: `${hours}:${minutes}`
+  };
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateElement = document.querySelector("#current-date");
-currentDateElement.innerHTML = formatDate(new Date());
+let formattedDate = formatDate(new Date());
+
+document.querySelector("#current-day").innerHTML = formattedDate.day;
+document.querySelector("#current-time").innerHTML = formattedDate.time;
 
 searchCity("Paris");
